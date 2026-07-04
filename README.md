@@ -2,6 +2,14 @@
 
 Warehouse Management - Laravel is a production-style Warehouse and Inventory Management System built with Laravel 12. It demonstrates a full web application architecture for catalog management, warehouses, stock operations, purchase order workflows, reporting, exports, audit logs, and dashboard visibility.
 
+## Live Portfolio Page
+
+A static, GitHub Pages landing page for this project is available at:
+
+**[https://farhanrahmananik.github.io/warehouse-management-laravel/](https://farhanrahmananik.github.io/warehouse-management-laravel/)**
+
+This is a static HTML/CSS/JS portfolio page (served from `docs/`) and does not run the Laravel application itself — it links back to this repository for the source and setup instructions.
+
 ## Core Features
 
 | Domain | Features |
