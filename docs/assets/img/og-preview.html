@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WarehousePro OG Preview Source</title>
+<style>
+  :root {
+    --wm-sidebar: #0f172a;
+    --wm-primary: #2563eb;
+    --wm-primary-light: #38bdf8;
+    --wm-success: #16a34a;
+    --wm-warning: #d97706;
+    --wm-danger: #dc2626;
+    --wm-info: #0891b2;
+    --wm-text: #172033;
+    --wm-muted: #6b7280;
+    --wm-border: #e5e9f2;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    font-family: 'Instrument Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  }
+
+  .canvas {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    padding: 50px 60px 40px;
+    color: #ffffff;
+    background:
+      radial-gradient(circle at 18% 8%, rgba(56, 189, 248, 0.28), transparent 30rem),
+      radial-gradient(circle at 90% 4%, rgba(37, 99, 235, 0.38), transparent 32rem),
+      radial-gradient(circle at 78% 98%, rgba(56, 189, 248, 0.14), transparent 26rem),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 64, 175, 0.92)),
+      var(--wm-sidebar);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* subtle grid texture, local-only (no external assets) */
+  .canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* ---------- top row: brand + badge ---------- */
+
+  .top-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    box-shadow: 0 12px 26px rgba(37, 99, 235, 0.45);
+  }
+
+  .brand-mark svg { width: 24px; height: 24px; }
+
+  .brand-title {
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-subtitle {
+    font-size: 12.5px;
+    font-weight: 650;
+    color: rgba(255,255,255,0.6);
+    margin-top: 1px;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.08);
+    color: #bfdbfe;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ---------- main row ---------- */
+
+  .main-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .left-col {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .headline {
+    font-size: 51px;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 22px 0 16px;
+    max-width: 610px;
+  }
+
+  .headline .accent {
+    background: linear-gradient(135deg, #7dd3fc, #93c5fd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .subline {
+    font-size: 20px;
+    font-weight: 650;
+    color: rgba(255,255,255,0.82);
+    margin: 0 0 22px;
+    max-width: 560px;
+  }
+
+  .feature-line {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #bfdbfe;
+    max-width: 610px;
+    line-height: 1.5;
+  }
+
+  .feature-line svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    color: #7dd3fc;
+  }
+
+  /* ---------- right col: dashboard mockup ---------- */
+
+  .right-col {
+    flex: 0 0 418px;
+  }
+
+  .dash-card {
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 30px 60px rgba(2, 6, 23, 0.45);
+    padding: 22px 22px 22px;
+    color: var(--wm-text);
+  }
+
+  .dash-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .dash-card-title {
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .dash-card-sub {
+    font-size: 11.5px;
+    font-weight: 650;
+    color: var(--wm-muted);
+    margin-top: 1px;
+  }
+
+  .dash-dot-row { display: flex; gap: 6px; }
+  .dash-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--wm-border); }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .stat-card {
+    border: 1px solid var(--wm-border);
+    border-radius: 14px;
+    padding: 13px 10px;
+    background: #f8fafc;
+    text-align: center;
+  }
+
+  .stat-card-value {
+    font-size: 21px;
+    font-weight: 850;
+    color: var(--wm-text);
+    line-height: 1.1;
+  }
+
+  .stat-card-label {
+    margin-top: 4px;
+    font-size: 10px;
+    font-weight: 750;
+    color: var(--wm-muted);
+    letter-spacing: 0.01em;
+  }
+
+  .chips-block {
+    border: 1px solid var(--wm-border);
+    border-radius: 14px;
+    padding: 14px 14px 12px;
+    background: #f8fafc;
+  }
+
+  .chips-title {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--wm-muted);
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .module-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 750;
+    padding: 6px 11px 6px 8px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid var(--wm-border);
+    color: var(--wm-text);
+  }
+
+  .module-chip .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+  }
+
+  /* ---------- footer ---------- */
+
+  .footer-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+  }
+
+  .repo-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #dbeafe;
+  }
+
+  .repo-line svg { width: 18px; height: 18px; flex: 0 0 auto; }
+
+  .author-line {
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .author-line strong {
+    color: #ffffff;
+    font-weight: 800;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="top-row">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/></svg>
+      </span>
+      <span>
+        <span class="brand-title" style="display:block;">WarehousePro</span>
+        <span class="brand-subtitle" style="display:block;">Inventory Suite &middot; Laravel 12</span>
+      </span>
+    </div>
+    <span class="kicker">Portfolio Project &middot; Laravel 12</span>
+  </div>
+
+  <div class="main-row">
+    <div class="left-col">
+      <h1 class="headline">Warehouse Management <span class="accent">&mdash; Laravel</span></h1>
+      <p class="subline">Production-style inventory and stock control system.</p>
+
+      <div class="feature-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+        <span>Inventory Reports &bull; Stock Ledger &bull; Purchase Orders &bull; Audit Logs</span>
+      </div>
+    </div>
+
+    <div class="right-col">
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <div>
+            <div class="dash-card-title">Project Snapshot</div>
+            <div class="dash-card-sub">Tests &middot; Modules &middot; Workflows</div>
+          </div>
+          <div class="dash-dot-row">
+            <span class="dash-dot"></span>
+            <span class="dash-dot"></span>
+            <span class="dash-dot"></span>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-card-value">249</div>
+            <div class="stat-card-label">Tests</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-value">1,455</div>
+            <div class="stat-card-label">Assertions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-value">14</div>
+            <div class="stat-card-label">Core Modules</div>
+          </div>
+        </div>
+
+        <div class="chips-block">
+          <div class="chips-title">Core Workflows</div>
+          <div class="chips-row">
+            <span class="module-chip"><span class="dot" style="background:#16a34a;"></span>Stock In</span>
+            <span class="module-chip"><span class="dot" style="background:#dc2626;"></span>Stock Out</span>
+            <span class="module-chip"><span class="dot" style="background:#0891b2;"></span>Transfer</span>
+            <span class="module-chip"><span class="dot" style="background:#d97706;"></span>Reports</span>
+            <span class="module-chip"><span class="dot" style="background:#2563eb;"></span>Audit Logs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-row">
+    <span class="repo-line">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+      github.com/farhanrahmananik/warehouse-management-laravel
+    </span>
+    <span class="author-line"><strong>Farhan Rahman Anik</strong></span>
+  </div>
+
+</div>
+
+</body>
+</html>
