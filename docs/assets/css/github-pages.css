@@ -28,11 +28,24 @@
     --wm-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
 body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     overflow-x: hidden;
     color: var(--wm-text);
     background: var(--wm-bg);
@@ -40,7 +53,32 @@ body {
     overflow-wrap: break-word;
 }
 
+nav,
+main,
+header,
+section,
+footer {
+    width: 100%;
+    max-width: 100%;
+}
+
+main,
+.container,
+.row,
+.row > *,
+.wm-brand,
+.wm-navbar .navbar-collapse,
+.wm-hero-actions,
+.wm-hero-stats,
+.wm-card,
+.wm-stat-block,
+.wm-screenshot-card,
+.wm-footer-links {
+    min-width: 0;
+}
+
 img {
+    display: block;
     max-width: 100%;
     height: auto;
 }
@@ -711,6 +749,26 @@ img {
 }
 
 @media (max-width: 575.98px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .wm-navbar .container {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    .wm-navbar .navbar-collapse {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .wm-hero-actions > *,
+    .wm-cta-group > * {
+        max-width: 100%;
+    }
+
     .wm-hero-stats {
         grid-template-columns: minmax(0, 1fr);
     }
