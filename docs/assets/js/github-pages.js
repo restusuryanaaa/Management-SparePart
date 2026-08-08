@@ -1,71 +1,73 @@
 (function () {
     'use strict';
 
-    // Auto-close the mobile navbar collapse after a link is tapped.
-    var navCollapseEl = document.getElementById('wmNavbar');
-    if (navCollapseEl && window.bootstrap) {
-        var collapse = new bootstrap.Collapse(navCollapseEl, { toggle: false });
-        navCollapseEl.querySelectorAll('.nav-link').forEach(function (link) {
-            link.addEventListener('click', function () {
-                if (navCollapseEl.classList.contains('show')) {
-                    collapse.hide();
-                }
-            });
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.getElementById('site-navigation');
+    const desktopQuery = window.matchMedia('(min-width: 54rem)');
+
+    function setMenu(open) {
+        if (!menuButton || !navigation) return;
+
+        menuButton.setAttribute('aria-expanded', String(open));
+        navigation.classList.toggle('is-open', open);
+        document.body.classList.toggle('nav-open', open && !desktopQuery.matches);
+    }
+
+    if (menuButton && navigation) {
+        menuButton.addEventListener('click', function () {
+            setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+        });
+
+        navigation.addEventListener('click', function (event) {
+            if (event.target.closest('a')) setMenu(false);
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                setMenu(false);
+                menuButton.focus();
+            }
+        });
+
+        desktopQuery.addEventListener('change', function () {
+            setMenu(false);
         });
     }
 
-    // Highlight the nav link for the section currently in view.
-    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.wm-nav-link[href^="#"]'));
-    var sections = navLinks
+    const sectionLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#"]'));
+    const sections = sectionLinks
         .map(function (link) {
             return document.querySelector(link.getAttribute('href'));
         })
         .filter(Boolean);
 
-    if (sections.length && 'IntersectionObserver' in window) {
-        var setActive = function (id) {
-            navLinks.forEach(function (link) {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-            });
-        };
+    if ('IntersectionObserver' in window && sections.length) {
+        const sectionObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
 
-        var observer = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        setActive(entry.target.id);
-                    }
+                sectionLinks.forEach(function (link) {
+                    const active = link.getAttribute('href') === '#' + entry.target.id;
+                    if (active) link.setAttribute('aria-current', 'true');
+                    else link.removeAttribute('aria-current');
                 });
-            },
-            { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-        );
+            });
+        }, { rootMargin: '-35% 0px -58% 0px' });
 
         sections.forEach(function (section) {
-            observer.observe(section);
+            sectionObserver.observe(section);
         });
     }
 
-    // Back-to-top button visibility and click behaviour.
-    var backToTop = document.getElementById('wmBackToTop');
+    const year = document.getElementById('current-year');
+    if (year) year.textContent = new Date().getFullYear();
+
+    const backToTop = document.querySelector('.back-to-top');
     if (backToTop) {
-        var toggleVisibility = function () {
-            backToTop.classList.toggle('is-visible', window.scrollY > 480);
-        };
-
-        window.addEventListener('scroll', toggleVisibility, { passive: true });
-        toggleVisibility();
-
-        var prefersReducedMotion = window.matchMedia
-            && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        backToTop.addEventListener('click', function () {
-            window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+        backToTop.addEventListener('click', function (event) {
+            event.preventDefault();
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
         });
-    }
-
-    // Current year in the footer.
-    var yearEl = document.getElementById('wmYear');
-    if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
     }
 })();

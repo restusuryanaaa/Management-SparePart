@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Warehouse Management &mdash; Laravel 12 Inventory System</title>
+    <title>Warehouse Management &mdash; Laravel 12 Engineering Case Study</title>
     <meta name="description" content="Production-style Warehouse and Inventory Management System built with Laravel 12, featuring stock ledger workflows, purchase orders, reports, audit logs, and RBAC.">
 
     <link rel="canonical" href="https://farhanrahmananik.github.io/warehouse-management-laravel/">
@@ -13,7 +13,7 @@
     <meta property="og:title" content="Warehouse Management &mdash; Laravel 12 Inventory System">
     <meta property="og:description" content="Production-style Warehouse and Inventory Management System built with Laravel 12, featuring stock ledger workflows, purchase orders, reports, audit logs, and RBAC.">
     <meta property="og:url" content="https://farhanrahmananik.github.io/warehouse-management-laravel/">
-    <meta property="og:image" content="https://farhanrahmananik.github.io/warehouse-management-laravel/assets/img/og-preview.png?v=20260704">
+    <meta property="og:image" content="https://farhanrahmananik.github.io/warehouse-management-laravel/assets/img/og-preview.png?v=20260809">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="WarehousePro social preview banner for the Warehouse Management Laravel portfolio project">
@@ -21,618 +21,480 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Warehouse Management &mdash; Laravel 12 Inventory System">
     <meta name="twitter:description" content="Production-style Warehouse and Inventory Management System built with Laravel 12, featuring stock ledger workflows, purchase orders, reports, audit logs, and RBAC.">
-    <meta name="twitter:image" content="https://farhanrahmananik.github.io/warehouse-management-laravel/assets/img/og-preview.png?v=20260704">
+    <meta name="twitter:image" content="https://farhanrahmananik.github.io/warehouse-management-laravel/assets/img/og-preview.png?v=20260809">
+    <meta name="theme-color" content="#101814">
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2338bdf8'/%3E%3Cstop offset='1' stop-color='%232563eb'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='url(%23g)'/%3E%3Cpath d='M12 4l6.5 3.75v8.5L12 20l-6.5-3.75v-8.5z' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3Cpath d='M5.5 7.75L12 11.5l6.5-3.75M12 11.5V20' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3C/svg%3E">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/github-pages.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230b1324'/%3E%3Cpath d='M12 4l6.5 3.75v8.5L12 20l-6.5-3.75v-8.5z' fill='none' stroke='%23ffb25f' stroke-width='1.6'/%3E%3Cpath d='M5.5 7.75L12 11.5l6.5-3.75M12 11.5V20' fill='none' stroke='%23ffb25f' stroke-width='1.6'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="assets/css/github-pages.css">
+    <script src="assets/js/github-pages.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
-<a class="wm-skip-link visually-hidden-focusable" href="#main-content">Skip to main content</a>
-
-<nav class="navbar navbar-expand-lg sticky-top wm-navbar">
-    <div class="container">
-        <a class="wm-brand" href="#top">
-            <span class="wm-brand-mark">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/></svg>
-            </span>
-            <span>
-                <span class="wm-brand-title">WarehousePro</span>
-                <span class="wm-brand-subtitle">Inventory Suite &middot; Laravel 12</span>
+<header class="site-header" id="top">
+    <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="Warehouse Management project — back to top">
+            <span class="brand-mark" aria-hidden="true">WM</span>
+            <span class="brand-copy">
+                <strong>Warehouse Management</strong>
+                <span>Laravel 12 case study</span>
             </span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#wmNavbar" aria-controls="wmNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+            <span class="menu-label">Menu</span>
+            <span class="menu-icon" aria-hidden="true"></span>
         </button>
-        <div class="collapse navbar-collapse" id="wmNavbar">
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
-                <li class="nav-item"><a class="nav-link wm-nav-link" href="#overview">Overview</a></li>
-                <li class="nav-item"><a class="nav-link wm-nav-link" href="#modules">Modules</a></li>
-                <li class="nav-item"><a class="nav-link wm-nav-link" href="#architecture">Architecture</a></li>
-                <li class="nav-item"><a class="nav-link wm-nav-link" href="#stack">Tech Stack</a></li>
-                <li class="nav-item"><a class="nav-link wm-nav-link" href="#testing">Testing</a></li>
-                <li class="nav-item"><a class="nav-link wm-nav-link" href="#screenshots">Screenshots</a></li>
-                <li class="nav-item ms-lg-2">
-                    <a class="btn btn-primary btn-sm wm-nav-cta" href="https://github.com/farhanrahmananik/warehouse-management-laravel" target="_blank" rel="noopener noreferrer">GitHub<span class="visually-hidden"> (opens in new tab)</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 
-<main id="main-content">
-
-<header id="top" class="wm-hero">
-    <div class="container position-relative">
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-9">
-                <span class="wm-hero-kicker">Portfolio Project &middot; Laravel 12</span>
-                <h1 class="wm-hero-title mx-auto">Warehouse Management &mdash; Laravel</h1>
-                <p class="wm-hero-subtitle mx-auto">
-                    A production-style Warehouse and Inventory Management System built with Laravel 12.
-                    Catalog management, warehouses, stock operations, purchase order workflows, reporting,
-                    CSV exports, audit logs, and a live operations dashboard &mdash; all in one focused codebase.
-                </p>
-                <div class="wm-hero-actions justify-content-center">
-                    <a class="btn-wm-primary" href="https://github.com/farhanrahmananik/warehouse-management-laravel" target="_blank" rel="noopener noreferrer">
-                        View Source on GitHub<span class="visually-hidden"> (opens in new tab)</span>
-                    </a>
-                    <a class="btn-wm-ghost" href="#modules">Browse Core Modules</a>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="wm-hero-stats">
-                    <div class="wm-stat-pill text-center">
-                        <div class="wm-stat-value">249</div>
-                        <div class="wm-stat-label">Tests Passing</div>
-                    </div>
-                    <div class="wm-stat-pill text-center">
-                        <div class="wm-stat-value">1,455</div>
-                        <div class="wm-stat-label">Assertions</div>
-                    </div>
-                    <div class="wm-stat-pill text-center">
-                        <div class="wm-stat-value">14</div>
-                        <div class="wm-stat-label">Core Modules</div>
-                    </div>
-                    <div class="wm-stat-pill text-center">
-                        <div class="wm-stat-value">L12</div>
-                        <div class="wm-stat-label">Laravel &middot; PHP 8.2+</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <nav class="site-nav" id="site-navigation" aria-label="Primary navigation">
+            <a href="#overview">Overview</a>
+            <a href="#workflows">Workflows</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#quality">Quality</a>
+            <a class="nav-repo" href="https://github.com/farhanrahmananik/warehouse-management-laravel" target="_blank" rel="noopener noreferrer">
+                GitHub <span aria-hidden="true">&nearr;</span>
+                <span class="sr-only">(opens in a new tab)</span>
+            </a>
+        </nav>
     </div>
 </header>
 
-<section id="overview" class="wm-section">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <span class="section-eyebrow">Project Overview</span>
-                <h2 class="section-title h1 mb-3">Built like a real warehouse operations system, not a CRUD demo</h2>
-                <p class="wm-overview-copy">
-                    This project demonstrates a full web application architecture for a warehouse and
-                    inventory workflow: role-based access control, catalog and supplier data, per-warehouse
-                    stock balances, a stock movement ledger, purchase order state transitions, exportable
-                    reports, and a sanitized audit trail &mdash; wired together with thin controllers and a
-                    dedicated service layer.
+<main id="main-content">
+    <section class="hero section-dark" aria-labelledby="hero-title">
+        <div class="shell hero-grid">
+            <div class="hero-copy">
+                <p class="eyebrow"><span>Portfolio build</span> Laravel 12 &middot; Inventory operations</p>
+                <h1 id="hero-title">Warehouse logic,<br><em>made traceable.</em></h1>
+                <p class="hero-lede">
+                    A production-style warehouse and inventory system designed around controlled stock
+                    mutations, explicit purchase-order states, permission boundaries, and an auditable ledger.
                 </p>
-                <p class="wm-overview-copy">
-                    It is designed to read the way a production internal tool would: permission-gated
-                    screens, validated forms, soft deletes on master data, and feature tests covering both
-                    happy paths and business-rule failures.
+                <div class="hero-actions">
+                    <a class="button button-accent" href="https://github.com/farhanrahmananik/warehouse-management-laravel" target="_blank" rel="noopener noreferrer">
+                        Review the source <span aria-hidden="true">&nearr;</span>
+                        <span class="sr-only">(opens in a new tab)</span>
+                    </a>
+                    <a class="button button-quiet" href="#architecture">Explore the architecture</a>
+                </div>
+                <dl class="project-facts" aria-label="Project facts">
+                    <div>
+                        <dt>249</dt>
+                        <dd>tests passing</dd>
+                    </div>
+                    <div>
+                        <dt>1,455</dt>
+                        <dd>assertions</dd>
+                    </div>
+                    <div>
+                        <dt>14</dt>
+                        <dd>core modules</dd>
+                    </div>
+                    <div>
+                        <dt>PHP 8.2+</dt>
+                        <dd>Laravel 12</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <aside class="system-trace" aria-labelledby="trace-title">
+                <div class="trace-header">
+                    <div>
+                        <p class="mono-label">Request trace / stock transfer</p>
+                        <h2 id="trace-title">One mutation. Clear ownership.</h2>
+                    </div>
+                    <span class="trace-status"><span aria-hidden="true"></span> committed</span>
+                </div>
+                <ol class="trace-list">
+                    <li>
+                        <span class="trace-index">01</span>
+                        <div><strong>Form Request</strong><small>shape + permission validation</small></div>
+                    </li>
+                    <li>
+                        <span class="trace-index">02</span>
+                        <div><strong>Thin Controller</strong><small>orchestrates the HTTP boundary</small></div>
+                    </li>
+                    <li>
+                        <span class="trace-index">03</span>
+                        <div><strong>Stock Service</strong><small>enforces quantity invariants</small></div>
+                    </li>
+                    <li>
+                        <span class="trace-index">04</span>
+                        <div><strong>DB Transaction</strong><small>balances + paired ledger entries</small></div>
+                    </li>
+                    <li>
+                        <span class="trace-index">05</span>
+                        <div><strong>Audit Log</strong><small>actor, event, context, reference</small></div>
+                    </li>
+                </ol>
+                <p class="trace-note">Failure at any rule boundary leaves stock unchanged.</p>
+            </aside>
+        </div>
+    </section>
+
+    <section class="project-strip" aria-label="Project summary">
+        <div class="shell strip-grid">
+            <p><span>01</span> Multi-warehouse inventory</p>
+            <p><span>02</span> Ledger-backed movements</p>
+            <p><span>03</span> Role-based access</p>
+            <p><span>04</span> Feature-tested workflows</p>
+        </div>
+    </section>
+
+    <section class="section section-light" id="overview" aria-labelledby="overview-title">
+        <div class="shell">
+            <div class="section-heading" data-reveal>
+                <div>
+                    <p class="eyebrow">01 / Project intent</p>
+                    <h2 id="overview-title">More than CRUD.<br>A system of invariants.</h2>
+                </div>
+                <p>
+                    The build models the parts that make inventory software difficult: quantities that must
+                    never drift, documents that change state, actions that require authority, and operations
+                    that need an explanation after the fact.
                 </p>
             </div>
-            <div class="col-lg-6">
-                <div class="row g-3">
-                    <div class="col-sm-6">
-                        <div class="wm-card">
-                            <span class="wm-icon-chip chip-primary">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 3.5v6c0 4.8-3 8.3-7 10.5-4-2.2-7-5.7-7-10.5v-6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
-                            </span>
-                            <h3 class="wm-card-title">RBAC &amp; Permissions</h3>
-                            <p class="wm-card-text">Custom roles, permissions, and Gate-backed middleware protect every route and Blade view.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="wm-card">
-                            <span class="wm-icon-chip chip-info">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/></svg>
-                            </span>
-                            <h3 class="wm-card-title">Service-Oriented</h3>
-                            <p class="wm-card-text">Thin controllers delegate validation to Form Requests and business rules to a service layer.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="wm-card">
-                            <span class="wm-icon-chip chip-success">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5m0 14h16M8 15l3-3 2 2 4-5"/></svg>
-                            </span>
-                            <h3 class="wm-card-title">Ledger-Based Stock</h3>
-                            <p class="wm-card-text">Per-warehouse balances stay in sync with an append-only stock movement ledger.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="wm-card">
-                            <span class="wm-icon-chip chip-warning">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5"/><circle cx="12" cy="16.2" r="0.6" fill="currentColor" stroke="none"/><path d="M10.6 3.5h2.8a1.5 1.5 0 0 1 1.3.75l6.5 11.2a1.5 1.5 0 0 1-1.3 2.25H4.1a1.5 1.5 0 0 1-1.3-2.25l6.5-11.2a1.5 1.5 0 0 1 1.3-.75z"/></svg>
-                            </span>
-                            <h3 class="wm-card-title">Audit Trail</h3>
-                            <p class="wm-card-text">Sensitive-value-sanitized logging for authentication, catalog, stock, and purchasing actions.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section id="modules" class="wm-section wm-section-alt">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-7">
-                <span class="section-eyebrow">Core Modules</span>
-                <h2 class="section-title h1 mb-3">Fourteen modules covering the full inventory lifecycle</h2>
-                <p class="section-subtitle mx-auto">From authentication through audit logs, every screen is permission-protected and backed by feature tests.</p>
-            </div>
-        </div>
-        <div class="row g-4">
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-primary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="9" rx="1.6"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Authentication &amp; RBAC</h3>
-                    <p class="wm-card-text">Session-based login/logout, custom roles and permissions, permission middleware, and Gate-protected Blade views.</p>
+            <figure class="product-frame" data-reveal>
+                <div class="frame-bar" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                    <p>warehouse.local / dashboard</p>
+                    <b>Operations overview</b>
                 </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-info">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.4"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.4"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.4"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Dashboard</h3>
-                    <p class="wm-card-text">Read-only summaries for catalog, warehouse, stock, purchase orders, low stock, and recent stock movements.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-success">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Product Management</h3>
-                    <p class="wm-card-text">Products with categories, units, validation, and soft deletes behind permission-protected CRUD screens.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-warning">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.5l-8 8-9-9v-8h8z"/><circle cx="8" cy="8" r="1.4" fill="currentColor" stroke="none"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Category Management</h3>
-                    <p class="wm-card-text">Category CRUD with validation, soft deletes, and permission-protected access.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-danger">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V6.5h9V16"/><path d="M12 9.5h4.5L21 13v3H12"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17.5" cy="17.5" r="1.7"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Supplier Management</h3>
-                    <p class="wm-card-text">Supplier master data with validation, soft deletes, and permission-protected CRUD screens.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-primary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Warehouse Management</h3>
-                    <p class="wm-card-text">Warehouse master data with create, read, update, delete, validation, authorization, and soft deletes.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-success">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7.5 11l4.5 4.5L16.5 11"/><path d="M4.5 19.5h15"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Stock In</h3>
-                    <p class="wm-card-text">Inbound stock documents that post directly to warehouse balances and the movement ledger.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-danger">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V8"/><path d="M7.5 12L12 7.5 16.5 12"/><path d="M4.5 19.5h15"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Stock Out</h3>
-                    <p class="wm-card-text">Outbound stock documents that reduce available balance with full validation on requested quantity.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-info">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 4l3.5 3.5L17 11"/><path d="M20.5 7.5H7a3 3 0 0 0-3 3V11"/><path d="M7 20l-3.5-3.5L7 13"/><path d="M3.5 16.5H17a3 3 0 0 0 3-3V13"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Stock Transfer</h3>
-                    <p class="wm-card-text">Warehouse-to-warehouse transfer documents that keep both sides of the ledger consistent.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-primary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="1.6"/><path d="M9 4V3h6v1"/><path d="M8.5 10.5h7M8.5 14h7M8.5 17.5h4"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Purchase Orders</h3>
-                    <p class="wm-card-text">Draft, approve, cancel, and receive workflows with line items and stock-receiving on completion.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-warning">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5"/><circle cx="12" cy="16.2" r="0.6" fill="currentColor" stroke="none"/><path d="M10.6 3.5h2.8a1.5 1.5 0 0 1 1.3.75l6.5 11.2a1.5 1.5 0 0 1-1.3 2.25H4.1a1.5 1.5 0 0 1-1.3-2.25l6.5-11.2a1.5 1.5 0 0 1 1.3-.75z"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Low Stock Alerts</h3>
-                    <p class="wm-card-text">Computed from each product's reorder level against live warehouse stock &mdash; surfaced on the dashboard and reports.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-danger">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="1.2"/><path d="M6.5 6v12M9 6v12M13 6v12M15.5 6v12M18 6v12"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Barcode / SKU Support</h3>
-                    <p class="wm-card-text">Unique SKU and barcode columns per product for fast, unambiguous identification across every workflow.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-success">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M11 20V4M18 20v-7"/><path d="M3 20h18"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Inventory Reports</h3>
-                    <p class="wm-card-text">Inventory, stock movement, low stock, and purchase order reports with permission-protected CSV exports.</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="wm-card">
-                    <span class="wm-icon-chip chip-info">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 3.5v6c0 4.8-3 8.3-7 10.5-4-2.2-7-5.7-7-10.5v-6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
-                    </span>
-                    <h3 class="wm-card-title">Audit Logs</h3>
-                    <p class="wm-card-text">Read-only audit UI covering authentication, catalog, warehouse, stock, and purchase order events.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<section id="architecture" class="wm-section">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-7">
-                <span class="section-eyebrow">Architecture Highlights</span>
-                <h2 class="section-title h1 mb-3">Structured the way a maintained internal tool should be</h2>
-            </div>
-        </div>
-        <div class="row g-3">
-            <div class="col-md-6">
-                <div class="wm-check-item">
-                    <span class="wm-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-                    <p class="wm-check-text">Thin controllers that delegate validation to Form Requests and business behavior to services.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="wm-check-item">
-                    <span class="wm-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-                    <p class="wm-check-text">A service layer for stock mutations, purchase order workflows, report queries, dashboard data, and audit logging.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="wm-check-item">
-                    <span class="wm-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-                    <p class="wm-check-text">Eloquent models with explicit relationships for users, roles, permissions, catalog data, warehouses, stock documents, purchase orders, and audit logs.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="wm-check-item">
-                    <span class="wm-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-                    <p class="wm-check-text">Permission-based route protection using custom RBAC middleware and Laravel Gates.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="wm-check-item">
-                    <span class="wm-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-                    <p class="wm-check-text">Feature tests for authentication, authorization, CRUD workflows, stock rules, purchase orders, reports, exports, dashboard data, and audit logging.</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="wm-check-item">
-                    <span class="wm-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-                    <p class="wm-check-text">Audit logging for important user and business actions, with sensitive-value sanitization.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="stack" class="wm-section wm-section-alt">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-7">
-                <span class="section-eyebrow">Tech Stack</span>
-                <h2 class="section-title h1 mb-3">A conventional, dependable Laravel toolchain</h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-md-6 wm-stack-group">
-                        <div class="wm-stack-label">Backend</div>
-                        <span class="wm-badge">PHP 8.2+</span>
-                        <span class="wm-badge">Laravel 12</span>
-                    </div>
-                    <div class="col-md-6 wm-stack-group">
-                        <div class="wm-stack-label">Database</div>
-                        <span class="wm-badge">MySQL (development)</span>
-                        <span class="wm-badge">SQLite in-memory (tests)</span>
-                    </div>
-                    <div class="col-md-6 wm-stack-group">
-                        <div class="wm-stack-label">Frontend</div>
-                        <span class="wm-badge">Bootstrap 5</span>
-                        <span class="wm-badge">Vite</span>
-                        <span class="wm-badge">jQuery</span>
-                        <span class="wm-badge">DataTables</span>
-                        <span class="wm-badge">SweetAlert2</span>
-                    </div>
-                    <div class="col-md-6 wm-stack-group">
-                        <div class="wm-stack-label">Testing &amp; Tooling</div>
-                        <span class="wm-badge">PHPUnit</span>
-                        <span class="wm-badge">Laravel Feature Tests</span>
-                        <span class="wm-badge">Git &amp; GitHub</span>
-                        <span class="wm-badge">Composer</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="database" class="wm-section">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-                <span class="section-eyebrow">Database &amp; ERD</span>
-                <h2 class="section-title h1 mb-3">Ten table groups, modeled around the stock ledger</h2>
-                <p class="wm-overview-copy">
-                    Current stock is never stored directly on a product &mdash; balances live per warehouse in
-                    <code>warehouse_stocks</code>, and every change is recorded in the <code>stock_movements</code>
-                    ledger. Master data uses soft deletes and restrictive foreign keys; purchase orders and stock
-                    documents carry their own item tables.
-                </p>
-                <div class="d-flex flex-wrap gap-2 wm-cta-group">
-                    <a class="btn btn-outline-primary btn-sm" href="https://github.com/farhanrahmananik/warehouse-management-laravel/blob/main/docs/database/database-design.md" target="_blank" rel="noopener noreferrer">Database Design Doc<span class="visually-hidden"> (opens in new tab)</span></a>
-                    <a class="btn btn-outline-primary btn-sm" href="https://github.com/farhanrahmananik/warehouse-management-laravel/blob/main/docs/database/erd.md" target="_blank" rel="noopener noreferrer">Entity Relationship Diagram<span class="visually-hidden"> (opens in new tab)</span></a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="row row-cols-1 row-cols-sm-2 g-2">
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Auth &amp; Authorization</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Product Catalog</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Supplier Management</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Warehouse Management</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Inventory Ledger</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Purchase Order Workflow</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Stock In</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Stock Out</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Stock Transfer</span></div>
-                    <div class="col"><span class="wm-badge d-block text-center w-100">Audit Logs</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="testing" class="wm-section wm-section-alt">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-5">
-                <div class="wm-stat-block">
-                    <div class="wm-stat-block-value">249</div>
-                    <div class="wm-stat-block-label">Tests Passing</div>
-                    <hr class="border-light opacity-25 my-3">
-                    <div class="wm-stat-block-value">1,455</div>
-                    <div class="wm-stat-block-label">Assertions</div>
-                    <div class="mt-3">
-                        <span class="wm-code-pill">php artisan test</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <span class="section-eyebrow">Testing &amp; Quality</span>
-                <h2 class="section-title h1 mb-3">Feature-tested happy paths and business-rule failures</h2>
-                <p class="wm-overview-copy">
-                    The automated suite runs against SQLite in-memory, as configured in <code>phpunit.xml</code>,
-                    so test runs never touch the local MySQL development database. Coverage spans:
-                </p>
-                <ul class="wm-highlight-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Authentication and authorization</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Catalog, warehouse, and stock CRUD workflows</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Stock ledger rules and purchase order state transitions</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Reports, CSV exports, dashboard data, and audit logging</li>
-                </ul>
-                <a class="btn btn-outline-primary btn-sm mt-2 wm-cta-single" href="https://github.com/farhanrahmananik/warehouse-management-laravel/blob/main/docs/testing/testing-guide.md" target="_blank" rel="noopener noreferrer">Read the Testing Guide<span class="visually-hidden"> (opens in new tab)</span></a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="reports" class="wm-section">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-7">
-                <span class="section-eyebrow">Reports &amp; Audit Trail</span>
-                <h2 class="section-title h1 mb-3">Visibility into every movement, decision, and export</h2>
-            </div>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="wm-card text-center">
-                    <h3 class="wm-card-title">Inventory Report</h3>
-                    <p class="wm-card-text">Current stock position across products and warehouses.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="wm-card text-center">
-                    <h3 class="wm-card-title">Stock Movement Report</h3>
-                    <p class="wm-card-text">Ledger history of stock in, out, transfer, and adjustment activity.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="wm-card text-center">
-                    <h3 class="wm-card-title">Low Stock Report</h3>
-                    <p class="wm-card-text">Products at or below their configured reorder level.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="wm-card text-center">
-                    <h3 class="wm-card-title">Purchase Order Report</h3>
-                    <p class="wm-card-text">Status distribution and history across purchasing activity.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-4">
-            <div class="col-lg-9">
-                <div class="wm-check-item">
-                    <span class="wm-check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
-                    <p class="wm-check-text">Every implemented report has a permission-protected CSV export, and the read-only Audit Logs module records who did what &mdash; across authentication, catalog, warehouse, stock, and purchase order actions &mdash; with sensitive values sanitized before they are stored.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="screenshots" class="wm-section wm-section-alt">
-    <div class="container">
-        <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-7">
-                <span class="section-eyebrow">Screenshots</span>
-                <h2 class="section-title h1 mb-3">A look at the live application</h2>
-                <p class="section-subtitle mx-auto">Actual captures from the running app &mdash; not mockups.</p>
-            </div>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="wm-screenshot-card">
-                    <div class="wm-screenshot-frame">
-                        <img src="screenshots/warehouse-login.png" alt="Warehouse Management Laravel login screen with email and password sign-in form" loading="lazy" width="2560" height="1305">
-                    </div>
-                    <div class="wm-screenshot-caption">
-                        <strong>Login</strong>
-                        <span>Session-based authentication</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="wm-screenshot-card">
-                    <div class="wm-screenshot-frame">
-                        <img src="screenshots/warehouse-dashboard.png" alt="Warehouse Management Laravel dashboard showing catalog stats, purchase order status, stock workflows, and low stock products" loading="lazy" width="2560" height="1565">
-                    </div>
-                    <div class="wm-screenshot-caption">
-                        <strong>Dashboard</strong>
-                        <span>Catalog, stock, and purchasing at a glance</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="portfolio" class="wm-section">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-                <span class="section-eyebrow">Portfolio Highlights</span>
-                <h2 class="section-title h1 mb-3">What this project is meant to demonstrate</h2>
-                <p class="wm-overview-copy">
-                    Practical Laravel application architecture: RBAC, permission middleware, service-oriented
-                    workflow logic, stock ledger rules, purchase order state transitions, reporting,
-                    auditability, and automated feature testing for both happy paths and business-rule failures.
-                </p>
-                <a class="btn-wm-primary d-inline-flex wm-cta-single" href="https://github.com/farhanrahmananik/warehouse-management-laravel" target="_blank" rel="noopener noreferrer">
-                    Explore the Repository<span class="visually-hidden"> (opens in new tab)</span>
+                <a href="screenshots/warehouse-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size dashboard screenshot in a new tab">
+                    <img src="screenshots/warehouse-dashboard.png" alt="WarehousePro dashboard showing inventory summaries, purchase order states, stock workflows, low-stock products, and recent stock movements" width="2560" height="1565">
                 </a>
-            </div>
-            <div class="col-lg-6">
-                <ul class="wm-highlight-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Role-based access control with custom permission middleware and Gates</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Thin controllers, Form Request validation, and a dedicated service layer</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Per-warehouse stock balances backed by an append-only movement ledger</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Purchase order state transitions: draft, approve, cancel, receive</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> Sanitized audit logging across every core module</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg> 249 automated tests, 1,455 assertions, covering failures as well as success</li>
-                </ul>
+                <figcaption>
+                    <span>Application dashboard</span>
+                    <p>A permission-aware operational view across catalog, purchasing, balances, alerts, and recent movement history.</p>
+                </figcaption>
+            </figure>
+
+            <div class="principle-grid">
+                <article data-reveal>
+                    <span class="principle-number">A</span>
+                    <h3>Balances answer “how much?”</h3>
+                    <p><code>warehouse_stocks</code> keeps fast current quantities scoped by product and warehouse.</p>
+                </article>
+                <article data-reveal>
+                    <span class="principle-number">B</span>
+                    <h3>The ledger answers “why?”</h3>
+                    <p>Every successful stock mutation records its type, quantity, actor, document, and warehouse context.</p>
+                </article>
+                <article data-reveal>
+                    <span class="principle-number">C</span>
+                    <h3>Services protect both.</h3>
+                    <p>Database transactions keep document state, balances, movements, and audit history consistent.</p>
+                </article>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <section class="section section-paper" id="workflows" aria-labelledby="workflows-title">
+        <div class="shell">
+            <div class="section-heading" data-reveal>
+                <div>
+                    <p class="eyebrow">02 / Domain workflows</p>
+                    <h2 id="workflows-title">Business rules live in the transitions.</h2>
+                </div>
+                <p>
+                    Each workflow is permission-gated, validated at the boundary, and committed atomically.
+                    Invalid state changes are rejected before inventory or audit records can drift.
+                </p>
+            </div>
+
+            <div class="workflow-grid">
+                <article class="workflow-card workflow-featured" data-reveal>
+                    <div class="card-topline">
+                        <p class="mono-label">Purchase order lifecycle</p>
+                        <span>stateful</span>
+                    </div>
+                    <h3>Receiving inventory is a controlled state change.</h3>
+                    <div class="state-flow" aria-label="Purchase order state flow">
+                        <div><span>01</span><strong>Draft</strong><small>editable</small></div>
+                        <i aria-hidden="true"></i>
+                        <div><span>02</span><strong>Approved</strong><small>locked</small></div>
+                        <i aria-hidden="true"></i>
+                        <div><span>03</span><strong>Received</strong><small>stock posted</small></div>
+                    </div>
+                    <ul class="rule-list">
+                        <li>Draft orders cannot be received.</li>
+                        <li>Approved orders cannot be edited or deleted.</li>
+                        <li>Receiving writes balances and purchase-in ledger rows once.</li>
+                        <li>Cancellation records the responsible actor and time.</li>
+                    </ul>
+                </article>
+
+                <article class="workflow-card" data-reveal>
+                    <div class="card-topline">
+                        <p class="mono-label">Stock in</p>
+                        <span class="signal signal-in">inbound</span>
+                    </div>
+                    <h3>Receive stock</h3>
+                    <p>Creates a stock-in document, increases the destination balance, and appends an inbound movement.</p>
+                    <code>document + balance + ledger + audit</code>
+                </article>
+
+                <article class="workflow-card" data-reveal>
+                    <div class="card-topline">
+                        <p class="mono-label">Stock out</p>
+                        <span class="signal signal-out">outbound</span>
+                    </div>
+                    <h3>Issue stock</h3>
+                    <p>Rejects negative or reserved-stock violations before decreasing inventory and recording the issue.</p>
+                    <code>available = quantity − reserved</code>
+                </article>
+
+                <article class="workflow-card" data-reveal>
+                    <div class="card-topline">
+                        <p class="mono-label">Stock transfer</p>
+                        <span class="signal signal-transfer">paired</span>
+                    </div>
+                    <h3>Move between warehouses</h3>
+                    <p>Updates both balances inside one transaction and creates linked transfer-out and transfer-in movements.</p>
+                    <code>source − qty &middot; destination + qty</code>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark architecture" id="architecture" aria-labelledby="architecture-title">
+        <div class="shell">
+            <div class="section-heading" data-reveal>
+                <div>
+                    <p class="eyebrow">03 / Architecture</p>
+                    <h2 id="architecture-title">Boundaries that keep change local.</h2>
+                </div>
+                <p>
+                    A conventional Laravel structure is used deliberately: the framework handles delivery
+                    concerns while focused services own cross-model workflows and consistency rules.
+                </p>
+            </div>
+
+            <div class="architecture-map" data-reveal>
+                <article>
+                    <span>HTTP boundary</span>
+                    <h3>Routes &rarr; Form Requests &rarr; Controllers</h3>
+                    <p>Middleware authorizes access. Form Requests validate intent. Controllers translate web actions into service calls.</p>
+                    <ul><li>Custom RBAC middleware</li><li>Laravel Gates + Blade checks</li><li>Thin controller actions</li></ul>
+                </article>
+                <article>
+                    <span>Domain boundary</span>
+                    <h3>Workflow services</h3>
+                    <p>Stock, purchasing, reporting, dashboard, and audit concerns are separated into focused service classes.</p>
+                    <ul><li>Explicit state rules</li><li>Transactional mutations</li><li>Reusable report queries</li></ul>
+                </article>
+                <article>
+                    <span>Persistence boundary</span>
+                    <h3>Eloquent models &amp; relational constraints</h3>
+                    <p>Normalized master data, transactional documents, stock balances, immutable movement history, and audit records.</p>
+                    <ul><li>Restrict / cascade / null delete rules</li><li>Soft-deleted master data</li><li>Decimal money + quantities</li></ul>
+                </article>
+            </div>
+
+            <div class="architecture-caption" data-reveal>
+                <p class="mono-label">Core consistency contract</p>
+                <p><strong>No successful stock change exists without a balance update and a matching movement record.</strong></p>
+                <span>All-or-nothing database transaction</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light modules" aria-labelledby="modules-title">
+        <div class="shell">
+            <div class="section-heading" data-reveal>
+                <div>
+                    <p class="eyebrow">04 / System surface</p>
+                    <h2 id="modules-title">The full inventory lifecycle, connected.</h2>
+                </div>
+                <p>
+                    Fourteen modules cover identity, master data, purchasing, stock control, operational
+                    visibility, reporting, export, and accountability.
+                </p>
+            </div>
+
+            <div class="module-ledger" data-reveal>
+                <article>
+                    <p>Access</p>
+                    <ol>
+                        <li><span>01</span> Authentication &amp; RBAC</li>
+                        <li><span>02</span> Dashboard</li>
+                    </ol>
+                </article>
+                <article>
+                    <p>Master data</p>
+                    <ol>
+                        <li><span>03</span> Categories</li>
+                        <li><span>04</span> Suppliers</li>
+                        <li><span>05</span> Products, Units + SKU</li>
+                        <li><span>06</span> Warehouses</li>
+                    </ol>
+                </article>
+                <article>
+                    <p>Operations</p>
+                    <ol>
+                        <li><span>07</span> Purchase Orders</li>
+                        <li><span>08</span> Stock Overview + Ledger</li>
+                        <li><span>09</span> Stock Adjustments</li>
+                        <li><span>10</span> Stock In</li>
+                    </ol>
+                </article>
+                <article>
+                    <p>Intelligence</p>
+                    <ol>
+                        <li><span>11</span> Stock Out</li>
+                        <li><span>12</span> Stock Transfer</li>
+                        <li><span>13</span> Reports + CSV Exports</li>
+                        <li><span>14</span> Audit Logs</li>
+                    </ol>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-paper quality" id="quality" aria-labelledby="quality-title">
+        <div class="shell">
+            <div class="quality-intro">
+                <div class="section-heading" data-reveal>
+                    <div>
+                        <p class="eyebrow">05 / Quality evidence</p>
+                        <h2 id="quality-title">Tests target failure paths, not just page loads.</h2>
+                    </div>
+                    <p>
+                        The suite uses an isolated in-memory SQLite database and feature tests the behavior
+                        users and warehouse data actually depend on.
+                    </p>
+                </div>
+                <dl class="quality-stats" data-reveal>
+                    <div><dt>249</dt><dd>passing tests</dd></div>
+                    <div><dt>1,455</dt><dd>assertions</dd></div>
+                    <div><dt>SQLite</dt><dd>isolated test DB</dd></div>
+                </dl>
+            </div>
+
+            <div class="coverage-grid">
+                <article data-reveal>
+                    <p class="mono-label">Authorization</p>
+                    <h3>Protected access</h3>
+                    <ul>
+                        <li>Guests redirect to login</li>
+                        <li>Unauthorized actions return 403</li>
+                        <li>Routes, Gates, and Blade visibility agree</li>
+                    </ul>
+                </article>
+                <article data-reveal>
+                    <p class="mono-label">Inventory integrity</p>
+                    <h3>Safe quantities</h3>
+                    <ul>
+                        <li>No negative available stock</li>
+                        <li>Reserved quantities remain protected</li>
+                        <li>Duplicate product rows are rejected</li>
+                    </ul>
+                </article>
+                <article data-reveal>
+                    <p class="mono-label">Transactional safety</p>
+                    <h3>Clean failure</h3>
+                    <ul>
+                        <li>Failed mutations create no movement</li>
+                        <li>Invalid input creates no audit record</li>
+                        <li>Successful writes stay ledger-aligned</li>
+                    </ul>
+                </article>
+                <article data-reveal>
+                    <p class="mono-label">Reporting</p>
+                    <h3>Permission-aware output</h3>
+                    <ul>
+                        <li>Filter behavior is verified</li>
+                        <li>Invalid filters are rejected</li>
+                        <li>CSV export has its own permission</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light interface" aria-labelledby="interface-title">
+        <div class="shell">
+            <div class="section-heading" data-reveal>
+                <div>
+                    <p class="eyebrow">06 / Interface proof</p>
+                    <h2 id="interface-title">Operational clarity over decoration.</h2>
+                </div>
+                <p>
+                    The application UI is designed as an internal tool: dense enough for daily operations,
+                    structured for scanning, and consistent across access, catalog, warehouse, and report screens.
+                </p>
+            </div>
+
+            <div class="screenshot-grid">
+                <figure data-reveal>
+                    <a href="screenshots/warehouse-login.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size login screenshot in a new tab">
+                        <img src="screenshots/warehouse-login.png" alt="WarehousePro login screen with a dark inventory-focused introduction and a clear sign-in form" width="2560" height="1305" loading="lazy">
+                    </a>
+                    <figcaption><span>01</span><p><strong>Access boundary</strong> — focused entry point with clear system context.</p></figcaption>
+                </figure>
+                <figure data-reveal>
+                    <a href="screenshots/warehouse-dashboard.png" target="_blank" rel="noopener noreferrer" aria-label="Open full-size dashboard screenshot in a new tab">
+                        <img src="screenshots/warehouse-dashboard.png" alt="WarehousePro operations dashboard with navigation, summary cards, workflow states, alerts, and movement history" width="2560" height="1565" loading="lazy">
+                    </a>
+                    <figcaption><span>02</span><p><strong>Operations cockpit</strong> — key inventory signals in one permission-aware view.</p></figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark closeout" aria-labelledby="closeout-title">
+        <div class="shell closeout-grid">
+            <div data-reveal>
+                <p class="eyebrow">Technical snapshot</p>
+                <h2 id="closeout-title">Built to be read,<br>run, and reviewed.</h2>
+                <p>
+                    A portfolio project demonstrating Laravel architecture through a complete domain:
+                    authorization, stateful workflows, transaction safety, relational modeling, reporting,
+                    auditability, and automated tests.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button-accent" href="https://github.com/farhanrahmananik/warehouse-management-laravel" target="_blank" rel="noopener noreferrer">
+                        Open repository <span aria-hidden="true">&nearr;</span>
+                        <span class="sr-only">(opens in a new tab)</span>
+                    </a>
+                    <a class="button button-quiet" href="https://farhanrahmananik.github.io/warehouse-management-laravel/">Project website</a>
+                </div>
+            </div>
+            <div class="stack-panel" data-reveal>
+                <p class="mono-label">Stack &amp; tooling</p>
+                <ul>
+                    <li><span>Application</span><strong>PHP 8.2+ / Laravel 12</strong></li>
+                    <li><span>Persistence</span><strong>MySQL / Eloquent ORM</strong></li>
+                    <li><span>Application UI</span><strong>Blade / Bootstrap 5 / Vite</strong></li>
+                    <li><span>Authorization</span><strong>Middleware / Gates / Blade checks</strong></li>
+                    <li><span>Quality</span><strong>PHPUnit / Laravel Feature Tests</strong></li>
+                    <li><span>Portfolio page</span><strong>Semantic HTML / CSS / JavaScript</strong></li>
+                </ul>
+                <nav class="document-links" aria-label="Project documents">
+                    <a href="https://github.com/farhanrahmananik/warehouse-management-laravel#readme" target="_blank" rel="noopener noreferrer">README <span aria-hidden="true">&nearr;</span></a>
+                    <a href="https://github.com/farhanrahmananik/warehouse-management-laravel/blob/main/docs/database/database-design.md" target="_blank" rel="noopener noreferrer">Database design <span aria-hidden="true">&nearr;</span></a>
+                    <a href="https://github.com/farhanrahmananik/warehouse-management-laravel/blob/main/docs/database/erd.md" target="_blank" rel="noopener noreferrer">ERD <span aria-hidden="true">&nearr;</span></a>
+                    <a href="https://github.com/farhanrahmananik/warehouse-management-laravel/blob/main/docs/testing/testing-guide.md" target="_blank" rel="noopener noreferrer">Testing guide <span aria-hidden="true">&nearr;</span></a>
+                </nav>
+            </div>
+        </div>
+    </section>
 </main>
 
-<footer class="wm-footer">
-    <div class="container">
-        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-4">
-            <a class="wm-brand" href="#top">
-                <span class="wm-brand-mark">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/></svg>
-                </span>
-                <span>
-                    <span class="wm-brand-title">WarehousePro</span>
-                    <span class="wm-brand-subtitle">Inventory Suite</span>
-                </span>
-            </a>
-            <div class="wm-footer-links">
-                <a href="https://github.com/farhanrahmananik/warehouse-management-laravel" target="_blank" rel="noopener noreferrer">Repository<span class="visually-hidden"> (opens in new tab)</span></a>
-                <a href="https://github.com/farhanrahmananik/warehouse-management-laravel/blob/main/README.md" target="_blank" rel="noopener noreferrer">README<span class="visually-hidden"> (opens in new tab)</span></a>
-                <span>MIT License</span>
-                <a href="mailto:farhan.anik@gmail.com">Contact</a>
-            </div>
-        </div>
-        <div class="wm-footer-bottom d-flex flex-column flex-sm-row justify-content-between gap-2">
-            <span>&copy; <span id="wmYear">2026</span> Md Farhan Rahman Anik. Built with Laravel 12.</span>
-            <span>This landing page is a static GitHub Pages site &mdash; it does not run the Laravel application.</span>
-        </div>
+<footer class="site-footer">
+    <div class="shell footer-inner">
+        <p>
+            <strong>Warehouse Management &mdash; Laravel</strong>
+            <span>
+                Designed and engineered by
+                <a class="author-link" href="https://github.com/farhanrahmananik" target="_blank" rel="noopener noreferrer">
+                    Farhan Rahman Anik<span class="sr-only"> (GitHub profile opens in a new tab)</span>
+                </a>.
+            </span>
+        </p>
+        <p>&copy; <span id="current-year">2026</span> &middot; Portfolio case study</p>
+        <a class="back-to-top" href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
     </div>
 </footer>
-
-<button type="button" id="wmBackToTop" class="wm-back-to-top" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M6 11l6-6 6 6"/></svg>
-</button>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/github-pages.js"></script>
 </body>
 </html>
