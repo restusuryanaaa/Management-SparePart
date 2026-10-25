@@ -19,15 +19,15 @@
             <a href="{{ route('login') }}" class="auth-brand">
                 <span class="brand-mark">{!! $brandIcon !!}</span>
                 <span>
-                    <span class="brand-title">WarehousePro</span>
-                    <span class="brand-subtitle">Inventory Suite</span>
+                    <span class="brand-title">Maintenance SparePart</span>
+                    <span class="brand-subtitle">Master List</span>
                 </span>
             </a>
 
             <div class="auth-copy">
                 <span class="auth-kicker">Warehouse Operations</span>
                 <h1>Manage inventory with clarity.</h1>
-                <p>Track products, warehouses, stock movements, purchase orders, reports, and audit history from one focused workspace.</p>
+                <p>Track spare parts, warehouses, stock movements, purchase orders, reports, and audit history from one focused workspace.</p>
             </div>
 
             <div class="auth-highlights">

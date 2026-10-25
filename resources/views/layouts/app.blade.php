@@ -53,8 +53,8 @@
                 <a href="{{ route('dashboard') }}" class="brand-link">
                     <span class="brand-mark">{!! $brandIcon !!}</span>
                     <span>
-                        <span class="brand-title">WarehousePro</span>
-                        <span class="brand-subtitle">Inventory Suite</span>
+                        <span class="brand-title">Maintenance SparePart</span>
+                        <span class="brand-subtitle">Master List</span>
                     </span>
                 </a>
 
@@ -95,7 +95,7 @@
                     @can('permission', 'products.view')
                         <a class="sidebar-link {{ request()->routeIs('products.*') ? 'active' : '' }}" href="{{ route('products.index') }}">
                             <span class="sidebar-icon">{!! $sidebarIcons['products'] !!}</span>
-                            <span>Products</span>
+                            <span>Spare Parts</span>
                         </a>
                     @endcan
                 @endif

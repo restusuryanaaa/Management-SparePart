@@ -5,8 +5,8 @@
 @section('content')
     <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 mb-4">
         <div>
-            <h1 class="h3 mb-1">Products</h1>
-            <p class="text-muted mb-0">Manage product master records.</p>
+            <h1 class="h3 mb-1">Spare Parts</h1>
+            <p class="text-muted mb-0">Manage spare part master records.</p>
         </div>
 
         @can('permission', 'products.create')
